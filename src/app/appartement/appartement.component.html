@@ -1,0 +1,11 @@
+<h2>les appartements de la résidence d'id = {{ id }}</h2>
+<div *ngFor="let apartment of filteredApartments"> 
+      
+        <h3>{{ apartment.description }}</h3>
+        <p>numero d'appartement: {{ apartment.appartNum }}</p>
+        <p>etage: {{ apartment.floorNum }}</p>
+        <p>surface: {{ apartment.surface }} sqm</p>
+        <p>terrace: {{ apartment.terrace }}</p>
+        <p>surface de terrace: {{ apartment.surfaceTerrace }} sqm</p>
+        <p>catégorie: {{ apartment.category }}</p>
+</div><br>

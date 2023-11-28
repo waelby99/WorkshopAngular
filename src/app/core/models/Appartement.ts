@@ -1,5 +1,4 @@
-import { Residence } from
-"./residence";
+import { Residence } from "./Residence";
 export class Apartment {
 id!: number;
 appartNum!: number;

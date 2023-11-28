@@ -5,6 +5,8 @@
       <th>Name</th>
       <th>Address</th>
       <th>Image</th>
+      <th>Afficher</th>
+      <th>Details</th>
     </tr>
   </thead>
   <tbody>
@@ -13,6 +15,25 @@
       <td>{{ residence.name }}</td>
       <td>{{ residence.address }}</td>
       <td><img [src]="residence.image" alt="{{ residence.name }}" width="100" height="100"></td>
-    </tr>
+      <td>
+        <button (click)="aff(residence)">afficher</button>
+        <button (click)="like(residence)">
+           Ajouter aux favoris
+        </button></td>
+      <td>
+            <a (click)="detailss(residence.id)"> détails </a>
+      </td>
+      </tr>
   </tbody>
 </table>
+<p *ngIf="residenceaaff">
+  id: {{ residenceaaff.id }}, nom: {{ residenceaaff.name }}, addresse: {{ residenceaaff.address }}
+</p>
+
+
+<h2>Liste des favoris</h2>
+<ul>
+  <li *ngFor="let favResidence of favoris">
+    {{ favResidence.name }}
+  </li>
+</ul>

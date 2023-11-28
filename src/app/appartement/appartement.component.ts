@@ -1,15 +1,29 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Residence } from '../core/models/Residence';
 import { Apartment } from '../core/models/Appartement';
 
-
 @Component({
-  selector: 'app-residences',
-  templateUrl: './residences.component.html',
-  styleUrls: ['./residences.component.css']
+  selector: 'app-appartement',
+  templateUrl: './appartement.component.html',
+  styleUrls: ['./appartement.component.css']
 })
-export class ResidencesComponent {
+export class AppartementComponent implements OnInit{
+
+  id:any;
+  constructor( private route:ActivatedRoute) {}
+  ngOnInit(): void {
+    this.route.params.subscribe(rt =>{
+      this.id=this.route.snapshot.params['id'];
+      this.filterApartments();
+    }) 
+  }
+  filteredApartments: Apartment[] = [];
+  filterApartments() {
+    this.filteredApartments = this.listApartments.filter(apartment => {
+      return apartment.residence.id.toString() === this.id.toString();
+    });
+  }
   
   listResidences:Residence[]=[
     {id:1,"name": "El fel","address":"Borj Cedria",
@@ -56,20 +70,4 @@ export class ResidencesComponent {
         residence: this.listResidences[1]
       }
     ];
-    residenceaaff: any; 
-
-  aff(residence: any) {
-    this.residenceaaff = residence;
-  }
-  favoris: any[] = [];
-  like(residence: any) {
-    this.favoris.push(residence);
-  }
-  constructor( private router: Router) {}
-
-  detailss(id:any){
-    this.router.navigate(['appartement/'+id]);
-  }
- 
-  
 }
